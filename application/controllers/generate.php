@@ -32,7 +32,7 @@ class Generate extends CI_Controller {
 	{
 		$this->load->helper('url');
 
-		return site_url('go/' . $hash);
+		return site_url($hash);
 	}
 
 	private function check_link($link)

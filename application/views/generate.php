@@ -53,7 +53,7 @@ Date: 05/2013
 			$.ajax({
 				type: 'post',
 				data: {'link':$('#link').attr('value')},
-  				url: 'http://localhost/slink/index.php/generate/process',
+  				url: 'generate/process',
   				success: function(data) {
       				$('#alink').html(data);
       				$('#alink').attr("href", data);

@@ -38,11 +38,12 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+//$route['default_controller'] = "welcome";
+$route['default_controller'] = "generate";
 $route['404_override'] = '';
 
+$route['^(?!generate).*'] = 'main';
 $route['generate'] = "generate";
-$route['go'] = "go";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
