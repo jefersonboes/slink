@@ -1,5 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+Author: Jeferson Ricardo Böes
+Email: jefersonboes@gmail.com
+Date: 05/2013
+*/
+
 class Generate extends CI_Controller {
 
 	public function index()

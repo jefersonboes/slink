@@ -1,5 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+Author: Jeferson Ricardo Böes
+Email: jefersonboes@gmail.com
+Date: 05/2013
+*/
+
 class LinkModel extends CI_Model {
 
     function __construct()
@@ -23,7 +29,6 @@ class LinkModel extends CI_Model {
         $this->db->update('links', $this, array('idLink' => $this->idLink));
     }
 
-    
     function get_link($hash)
     {
         $this->db->where('idLink', $this->get_id_by_hash($hash));
