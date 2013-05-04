@@ -36,7 +36,8 @@ class LinkModel extends CI_Model {
             return null;
     }
 
-    function gen_link_hash($link) {
+    function gen_link_hash($link) 
+    {
         $hash = $this->get_hash($link);
 
         if (!$hash)
