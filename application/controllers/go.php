@@ -21,5 +21,9 @@ class Go extends CI_Controller {
 			$this->load->helper('url');
 			redirect($link, 'refresh');
 		}
+		else
+		{
+			$this->load->view("invalid_link");
+		}
 	}
 }

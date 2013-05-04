@@ -1,3 +1,9 @@
+<!--
+Author: Jeferson Ricardo Böes
+Email: jefersonboes@gmail.com
+Date: 05/2013
+-->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
