@@ -27,21 +27,7 @@ class Generate extends CI_Controller {
 			$this->LinkModel->insert_link();
 		}
 
-		/*$data = $this->LinkModel->get_links();
-
-		foreach ($data as $link)
-		{
-        	echo $link->Link;
-        	echo "</br>";
-    	}*/
-
-
-		//$this->load->helper('url');
-		//redirect('/generate', 'refresh');
-
-    	$data['link'] = $this->gen_link($hash);
-    	$this->load->helper('form');    	
-		$this->load->view('generate', $data);
+		echo $this->gen_link($hash);
 	}
 
 	private function gen_link($hash)

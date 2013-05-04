@@ -10,9 +10,9 @@
 		.edit { width: 250px; }
 
 		.button {
-			 border-radius: 6px;
-			 height: 30px;
-			 font-family: Arial,sans-serif;
+			border-radius: 6px;
+			height: 30px;
+			font-family: Arial,sans-serif;
 
 			color: #fff;
 			text-shadow: 0 -1px 1px rgba(0,0,0,.25);
@@ -38,19 +38,37 @@
 		}
 
 	</style>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		function generate() {
+
+			$.ajax({
+				type: 'post',
+				data: {'link':$('#link').attr('value')},
+  				url: 'http://localhost/slink/index.php/generate/process',
+  				success: function(data) {
+      				$('#alink').html(data);
+      				$('#alink').attr("href", data);
+  				},
+  				error: function(data) {
+  					alert("error: " + data);
+  				}
+			});
+
+		}
+	</script>
 </head>
 <body>
 	<div class="container">
-		<?php echo form_open('generate/process');?>
+		<fieldset>
+			<label for="link">Link</label>
+			<input class="edit" id="link" name="link"></input>
+			<button class="button" onClick="generate()">Generate</button>
 
-			<fieldset>
-				<label for="link">Link</label>
-				<input class="edit" name="link"></input>
-				<input class="button" type="submit" value="Generate"/>
-			</fieldset>
-		</form>
-
-		<?php if (isset($link)) {?><a href=<?php echo $link . ">"; echo $link; }?></a>
+			<a id="alink" href=""></a>
+		</fieldset>		
 	</div>
 </body>
 </html>
