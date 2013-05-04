@@ -23,21 +23,10 @@ class LinkModel extends CI_Model {
         $this->db->update('links', $this, array('idLink' => $this->idLink));
     }
 
-    function get_hash($link)
-    {
-        $this->db->where('Link', $link);
-        $query = $this->db->get('links');
-        if ($query->num_rows() > 0) {
-            $row = $query->row_array();
-            return $row['Hash'];
-        }
-        else
-            return null;
-    }
-
+    
     function get_link($hash)
     {
-        $this->db->where('Hash', $hash);
+        $this->db->where('idLink', $this->get_id_by_hash($hash));
         $query = $this->db->get('links');
         if ($query->num_rows() > 0) {
             $row = $query->row_array();
@@ -47,7 +36,49 @@ class LinkModel extends CI_Model {
             return null;
     }
 
-    function gen_hash() {
-        return hash("crc32", uniqid(rand()));
+    function gen_link_hash($link) {
+        $hash = $this->get_hash($link);
+
+        if (!$hash)
+        {
+            $this->Link = $link;
+            $this->insert_link();
+
+            $hash = $this->get_hash($link);
+        }
+
+        return $hash;
+    }
+
+    private function get_hash_by_id($id)
+    {
+        $b64 =  base64_encode($id);
+
+        $replaces = array('a' => 'a1', '+' => 'a2',  '/' => 'a3', '=' => 'a4');
+
+        $hash = strtr($b64, $replaces);
+
+        return $hash;
+    }
+
+    private function get_id_by_hash($hash)
+    {
+        $replaces = array('a1' => 'a', 'a2' => '+',  'a3' => '/', 'a4' => '=');
+
+        $hash64 = strtr($hash, $replaces);
+
+        return base64_decode($hash64);
+    }
+
+    private function get_hash($link)
+    {
+        $this->db->where('Link', $link);
+        $query = $this->db->get('links');
+        if ($query->num_rows() > 0) {
+            $row = $query->row_array();
+            return $this->get_hash_by_id($row['idLink']);
+        }
+        else
+            return null;
     }
 }

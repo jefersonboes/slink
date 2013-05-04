@@ -4,7 +4,6 @@ class Generate extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->helper('form');
 		$this->load->view('generate');
 	}
 
@@ -14,18 +13,9 @@ class Generate extends CI_Controller {
 
 		$link = $this->input->post('link');
 
-		$this->load->model('LinkModel');		
+		$this->load->model('LinkModel');
 
-		$hash = $this->LinkModel->get_hash($link);
-
-		if (!$hash)
-		{
-			$hash = $this->LinkModel->gen_hash();
-
-			$this->LinkModel->Link = $link;
-			$this->LinkModel->Hash = $hash;
-			$this->LinkModel->insert_link();
-		}
+		$hash = $this->LinkModel->gen_link_hash($link);
 
 		echo $this->gen_link($hash);
 	}
