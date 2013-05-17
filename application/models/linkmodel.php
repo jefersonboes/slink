@@ -15,24 +15,24 @@ class LinkModel extends CI_Model {
 
     function get_links()
     {
-        $query = $this->db->get('links');
+        $query = $this->db->get('LINKS');
         return $query->result();
     }
 
     function insert_link()
     {
-        $this->db->insert('links', $this);
+        $this->db->insert('LINKS', $this);
     }
 
     function update_link()
     {
-        $this->db->update('links', $this, array('idLink' => $this->idLink));
+        $this->db->update('LINKS', $this, array('"idLink"' => $this->idLink));
     }
 
     function get_link($hash)
     {
-        $this->db->where('idLink', $this->get_id_by_hash($hash));
-        $query = $this->db->get('links');
+        $this->db->where('"idLink"', $this->get_id_by_hash($hash));
+        $query = $this->db->get('"LINKS"');
         if ($query->num_rows() > 0) {
             $row = $query->row_array();
             return $row['Link'];
@@ -78,9 +78,10 @@ class LinkModel extends CI_Model {
 
     private function get_hash($link)
     {
-        $this->db->where('Link', $link);
-        $query = $this->db->get('links');
-        if ($query->num_rows() > 0) {
+        $this->db->where('"Link"', $link);
+        $query = $this->db->get('"LINKS"');
+        //if ($query->num_rows() > 0) { //TODO CI firebird driver not suport num_rows
+        if (count($query->row_array()) > 0) {        
             $row = $query->row_array();
             return $this->get_hash_by_id($row['idLink']);
         }

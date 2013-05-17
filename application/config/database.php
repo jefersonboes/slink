@@ -45,7 +45,7 @@
 | the active record class
 */
 
-$active_group = 'test';
+$active_group = 'fbtest';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
@@ -95,6 +95,22 @@ $db['web']['dbcollat'] = 'utf8_general_ci';
 $db['web']['swap_pre'] = '';
 $db['web']['autoinit'] = TRUE;
 $db['web']['stricton'] = FALSE;
+
+$db['fbtest']['hostname'] = 'localhost';
+$db['fbtest']['username'] = 'SYSDBA';
+$db['fbtest']['password'] = 'masterkey';
+$db['fbtest']['database'] = 'c:/test.fdb';
+$db['fbtest']['dbdriver'] = 'firebird';
+$db['fbtest']['dbprefix'] = '';
+$db['fbtest']['pconnect'] = TRUE;
+$db['fbtest']['db_debug'] = TRUE;
+$db['fbtest']['cache_on'] = FALSE;
+$db['fbtest']['cachedir'] = '';
+$db['fbtest']['char_set'] = 'utf8';
+$db['fbtest']['dbcollat'] = 'utf8_general_ci';
+$db['fbtest']['swap_pre'] = '';
+$db['fbtest']['autoinit'] = TRUE;
+$db['fbtest']['stricton'] = FALSE;
 
 
 /* End of file database.php */

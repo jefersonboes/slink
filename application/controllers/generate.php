@@ -17,7 +17,8 @@ class Generate extends CI_Controller {
 	{
 		$this->load->database();
 
-		$link = $this->input->post('link');
+		//$link = $this->input->post('link');
+		$link = $this->input->get('link');
 
 		$link = $this->check_link($link);
 
