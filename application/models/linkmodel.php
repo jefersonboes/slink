@@ -80,7 +80,10 @@ class LinkModel extends CI_Model {
     {
         $this->db->where('"Link"', $link);
         $query = $this->db->get('"LINKS"');
-        //if ($query->num_rows() > 0) { //TODO CI firebird driver not suport num_rows
+
+        //TODO CI firebird driver not suport num_rows
+        //if ($query->num_rows() > 0) {
+
         if (count($query->row_array()) > 0) {        
             $row = $query->row_array();
             return $this->get_hash_by_id($row['idLink']);
