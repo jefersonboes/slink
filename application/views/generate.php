@@ -10,7 +10,7 @@ Date: 05/2013
 	<meta charset="utf-8">
 	<title>Generate link</title>
 
-	<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+	<link href="styles/styles.css" rel="stylesheet" type="text/css"/>
 
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 

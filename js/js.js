@@ -11,8 +11,9 @@ function generate()
 		data: {'link':$('#link').attr('value')},
 			url: 'generate/process',
 			success: function(data) {
-  				$('#alink').html(data);
-  				$('#alink').attr("href", data);
+					alink = $('#alink');
+  				alink.html(data);
+  				alink.attr("href", data);
 			},
 			error: function(data) {
 				alert("error: " + data);
