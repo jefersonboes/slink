@@ -16,15 +16,15 @@ class Generate extends CI_Controller {
 	public function process()
 	{
 		$this->load->database();
-
+		
 		$link = $this->input->post('link');
-
+		
 		$link = $this->check_link($link);
-
+		
 		$this->load->model('LinkModel');
-
+		
 		$hash = $this->LinkModel->gen_link_hash($link);
-
+		
 		echo $this->gen_link($hash);
 	}
 

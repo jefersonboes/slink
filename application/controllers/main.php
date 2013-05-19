@@ -16,12 +16,12 @@ class Main extends CI_Controller {
 
 	private function go_page($hash)
 	{
-	    $this->load->database();
+		$this->load->database();
 
 		$this->load->model('LinkModel');
-
+		
 		$link = $this->LinkModel->get_link($hash);
-
+		
 		if ($link)
 		{
 			$this->load->helper('url');
